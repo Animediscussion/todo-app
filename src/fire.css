@@ -1,0 +1,36 @@
+/* fire.css */
+.fire-bg {
+  position: relative;
+  background: black;
+  overflow: hidden;
+}
+
+.fire-bg::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(
+      circle at 50% 80%,
+      rgba(255, 140, 0, 0.6),
+      transparent 70%
+    ),
+    radial-gradient(circle at 60% 90%, rgba(255, 0, 0, 0.5), transparent 70%),
+    radial-gradient(circle at 40% 85%, rgba(255, 255, 0, 0.5), transparent 70%);
+  animation: flame-flicker 2s infinite ease-in-out alternate;
+  z-index: -1;
+}
+
+@keyframes flame-flicker {
+  0% {
+    transform: scale(1) translateY(0px);
+    filter: blur(3px);
+  }
+  50% {
+    transform: scale(1.05) translateY(-3px);
+    filter: blur(4px);
+  }
+  100% {
+    transform: scale(0.98) translateY(2px);
+    filter: blur(2px);
+  }
+}
